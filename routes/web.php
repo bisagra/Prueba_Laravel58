@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('prueba_laravel/productos', 'PruebasController@index');
+Route::post('prueba_laravel/agregar', 'PruebasController@store');
+
 Route::get('/', function () {
     return view('welcome');
 });
