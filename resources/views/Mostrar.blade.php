@@ -1,9 +1,3 @@
-<?php
-
-echo "estoy en mostrar";
-
-
-?>
 
 <h1> Nombre {{ $Nombre }} </h1>
 <h1> Edad {{ $Edad }} </h1>

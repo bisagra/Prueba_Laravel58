@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Producto;
+use App\Http\Requests;
 
-class PruebasController extends Controller
+
+class PruebaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +16,8 @@ class PruebasController extends Controller
      */
     public function index()
     {
-        //
-
         //echo "Hola en controlador Pruebas";
-        return view('Productos');
+        return view('ProductosFormulario');
     }
 
     /**
@@ -24,9 +25,18 @@ class PruebasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $producto = new Producto;
+
+        # Establecer propiedades leídas del formulario
+        $producto->nombre = $request->Nombre;
+        $producto->edad =$request->Edad;
+        $producto->fecha =  $request->Fecha;
+
+        $producto->save();
+
+        return view('ProductosFormulario');
     }
 
     /**
@@ -46,14 +56,7 @@ class PruebasController extends Controller
             'Nombre.required' => 'El Nombre es requerido',
             'Edad.required' => 'El Edad es requerido',
             'Fecha.required' => 'El Fecha es requerido',
-        ]
-
-    );
-    $Nombre = $request->post('Nombre');
-    $Edad = $request->post('Edad');
-    $Fecha = $request->post('Fecha');
-
-    return view('Mostrar', compact('Nombre', 'Edad', 'Fecha'));
+        ]);
 
     }
 

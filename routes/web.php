@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('prueba_laravel/productos', 'PruebasController@index');
-Route::post('prueba_laravel/agregar', 'PruebasController@store');
+Route::get('prueba_laravel/productos', 'PruebaController@index');
+Route::post('prueba_laravel/productos', 'PruebaController@create');
 
 Route::get('/', function () {
     return view('welcome');
