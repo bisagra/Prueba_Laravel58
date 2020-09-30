@@ -27,6 +27,18 @@ class PruebaController extends Controller
      */
     public function create(Request $request)
     {
+
+        $this->validate($request, [
+            'Nombre' => 'required',
+            'Edad' => 'required',
+            'Fecha' => 'required',
+        ],[
+            'Nombre.required' => 'El Nombre es requerido',
+            'Edad.required' => 'El Edad es requerido',
+            'Fecha.required' => 'El Fecha es requerido',
+        ]);
+
+
         $producto = new Producto;
 
         # Establecer propiedades leídas del formulario
@@ -37,6 +49,12 @@ class PruebaController extends Controller
         $producto->save();
 
         return view('ProductosFormulario');
+    }
+
+    public function show_all(Request $request){
+
+        $productos = Producto::all();
+        return view('Mostrar', ['productos' => $productos]);
     }
 
     /**

@@ -14,6 +14,8 @@
 Route::get('prueba_laravel/productos', 'PruebaController@index');
 Route::post('prueba_laravel/productos', 'PruebaController@create');
 
+Route::get('prueba_laravel/Mostrar', 'PruebaController@show_all');
+
 Route::get('/', function () {
     return view('welcome');
 });

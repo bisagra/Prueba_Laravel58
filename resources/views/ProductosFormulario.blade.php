@@ -20,13 +20,7 @@
     </div>
 @endif
 
-@if(session('mensaje'))
-    <div class= "alert alert-success">
-        <p>{{ session('mensaje') }}</p>
-    </div>
-@endif
-
-<form method="POST" action="{{url('prueba_laravel/crear')}}">
+<form method="POST" action="{{ url('prueba_laravel/productos') }}">
     @csrf
     <div class="form-group">
         <label for="nombre">Nombre: </label>
