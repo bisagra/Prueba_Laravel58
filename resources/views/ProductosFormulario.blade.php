@@ -2,12 +2,6 @@
 
 @section('title', 'Productos')
 
-@section('sidebar')
-    @parent
-
-    <p>This is appended to the master sidebar.</p>
-@endsection
-
 @section('content')
 
 @if($errors->any())
@@ -33,4 +27,9 @@
     </div>
 
 </form>
+
+<hr>
+
+@include('Mostrar')
+
 @endsection

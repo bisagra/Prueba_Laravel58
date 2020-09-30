@@ -12,11 +12,7 @@
     </head>
     <body>
 
-        @section('sidebar')
-            This is the master sidebar.
-        @show
-
-        <div class="container">
+        <div class="container" style="margin: 35px !important;">
             @yield('content')
         </div>
     <!-- Optional JavaScript -->

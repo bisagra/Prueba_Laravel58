@@ -17,7 +17,9 @@ class PruebaController extends Controller
     public function index()
     {
         //echo "Hola en controlador Pruebas";
-        return view('ProductosFormulario');
+        $productos = Producto::orderBy('id', 'desc')->paginate(4);
+        return view('ProductosFormulario', ['productos' => $productos]);
+
     }
 
     /**
@@ -28,9 +30,21 @@ class PruebaController extends Controller
     public function create(Request $request)
     {
 
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+
         $this->validate($request, [
             'Nombre' => 'required',
-            'Edad' => 'required',
+            'Edad' => 'required|integer',
             'Fecha' => 'required',
         ],[
             'Nombre.required' => 'El Nombre es requerido',
@@ -46,35 +60,25 @@ class PruebaController extends Controller
         $producto->edad =$request->Edad;
         $producto->fecha =  $request->Fecha;
 
-        $producto->save();
+        $producto::insert(request()->except('_token'));
 
-        return view('ProductosFormulario');
+        $productos = Producto::orderBy('id', 'desc')->paginate(4);
+        return view('ProductosFormulario', ['productos' => $productos]);
+
     }
 
     public function show_all(Request $request){
 
-        $productos = Producto::all();
+        $productos = Producto::paginate(5);
         return view('Mostrar', ['productos' => $productos]);
-    }
+        //return response()->json($productos);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+       /*
+        Muestra todos los productos
 
-        $this->validate($request, [
-            'Nombre' => 'required',
-            'Edad' => 'required',
-            'Fecha' => 'required',
-        ],[
-            'Nombre.required' => 'El Nombre es requerido',
-            'Edad.required' => 'El Edad es requerido',
-            'Fecha.required' => 'El Fecha es requerido',
-        ]);
+        $producto = new Producto;
+        $productos = $producto::get();
+        return response()->json($productos); */
 
     }
 

@@ -12,7 +12,7 @@
 */
 
 Route::get('prueba_laravel/productos', 'PruebaController@index');
-Route::post('prueba_laravel/productos', 'PruebaController@create');
+Route::post('prueba_laravel/productos', 'PruebaController@store');
 
 Route::get('prueba_laravel/Mostrar', 'PruebaController@show_all');
 
