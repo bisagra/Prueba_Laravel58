@@ -16,10 +16,13 @@ class PruebaController extends Controller
      */
     public function index()
     {
-        //echo "Hola en controlador Pruebas";
-        $productos = Producto::orderBy('id', 'desc')->paginate(4);
-        return view('ProductosFormulario', ['productos' => $productos]);
 
+        $productos = Producto::orderBy('id', 'desc')->paginate(4);
+
+        $data['productos'] = $productos;
+        $data['Main'] = 'ProductosFormulario';
+        $data['Detalle'] = 'Mostrar';
+		return view('Template',$data);
     }
 
     /**
@@ -40,7 +43,6 @@ class PruebaController extends Controller
      */
     public function store(Request $request)
     {
-
 
         $this->validate($request, [
             'Nombre' => 'required',
@@ -63,7 +65,10 @@ class PruebaController extends Controller
         $producto::insert(request()->except('_token'));
 
         $productos = Producto::orderBy('id', 'desc')->paginate(4);
-        return view('ProductosFormulario', ['productos' => $productos]);
+        $data['productos'] = $productos;
+        $data['Main'] = 'ProductosFormulario';
+        $data['Detalle'] = 'Mostrar';
+		return view('Template',$data);
 
     }
 
@@ -124,6 +129,9 @@ class PruebaController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $Producto=Producto::findOrFail($id);
+        $Producto->delete();
+        return  redirect('prueba_laravel/productos');
     }
 }

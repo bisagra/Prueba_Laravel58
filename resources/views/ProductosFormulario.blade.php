@@ -1,9 +1,3 @@
-@extends('Template')
-
-@section('title', 'Productos')
-
-@section('content')
-
 @if($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -27,9 +21,3 @@
     </div>
 
 </form>
-
-<hr>
-
-@include('Mostrar')
-
-@endsection

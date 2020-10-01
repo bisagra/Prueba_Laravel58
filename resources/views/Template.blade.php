@@ -12,8 +12,13 @@
     </head>
     <body>
 
-        <div class="container" style="margin: 35px !important;">
-            @yield('content')
+        <div class="container" >
+            @include($Main)
+            <?php if( $Detalle != ''){  ?>
+                <hr>
+                @include($Detalle)
+
+            <?php } ?>
         </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

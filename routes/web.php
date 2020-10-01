@@ -16,6 +16,8 @@ Route::post('prueba_laravel/productos', 'PruebaController@store');
 
 Route::get('prueba_laravel/Mostrar', 'PruebaController@show_all');
 
+Route::get('prueba_laravel/eliminar/{id}', 'PruebaController@destroy');
+
 Route::get('/', function () {
     return view('welcome');
 });
